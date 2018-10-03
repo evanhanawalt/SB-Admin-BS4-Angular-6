@@ -2,20 +2,25 @@
     <div class="row justify-content-md-center">
         <div class="col-md-4">
             <img src="assets/images/logo.png" width="150px" class="user-avatar" />
-            <h1>SB Admin BS4 Angular5</h1>
-            <form role="form">
+            <h1>BrewBase</h1>
+            <div id="login-error-message" class="alert alert-danger" style="display:none">
+                <strong>Invalid Login!</strong>
+            </div>
+            <form (ngSubmit)="onSubmit(email.value, password.value)" #loginForm="ngForm">
                 <div class="form-content">
+
+                    
                     <div class="form-group">
-                        <input type="text" ng-model="name" class="form-control input-underline input-lg" id="" placeholder="Email">
+                        <input #email type="text" ng-model="this.email" class="form-control input-underline input-lg" id="email" placeholder="Email" email.value="" required>
                     </div>
 
                     <div class="form-group">
-                        <input type="password" class="form-control input-underline input-lg" id="" placeholder="Password">
+                        <input #password type="password" ng-model="this.password" class="form-control input-underline input-lg" id="password" placeholder="Password" passoword.value="" required>
                     </div>
                 </div>
-                <a class="btn rounded-btn" [routerLink]="['/dashboard']" (click)="onLoggedin()"> Log in </a>
-                &nbsp;
-                <a class="btn rounded-btn" [routerLink]="['/signup']">Register</a>
+                <button type="submit" class="btn rounded-btn" > Log in </button>
+                <!-- <button class="btn rounded-btn" [routerLink]="['/dashboard']" (click)="tryLogin(email.value, password.value)"> Log in </button> -->
+                
             </form>
         </div>
     </div>
